@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 50% 40%, #f4efe9 0%, #d9d0c5 100%);
+  color: #4a3b30;
+}
+
+.total {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translate(-50%, -8px);
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+
+.total.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  /* сумма появляется, когда купюры уже долетели */
+  transition-delay: 0.9s;
+}
+
+.total-label {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.total-sum {
+  font-size: 40px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hint {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  font-size: 14px;
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  padding: 0 16px;
+}
+
+/* на телефоне в верхнем углу живёт мини-кошелёк, сумму опускаем под него */
+@media (max-width: 500px) {
+  .total {
+    top: 88px;
+  }
+}
